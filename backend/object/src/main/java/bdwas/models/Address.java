@@ -1,6 +1,7 @@
 package bdwas.models;
 
 
+import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Embeddable
 public class Address {
 
     private String country;

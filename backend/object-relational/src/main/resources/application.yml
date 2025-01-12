@@ -1,12 +1,12 @@
 spring:
   application:
-    name: relational
+    name: object-relational
   jackson:
     serialization:
       fail-on-empty-beans: false
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/bdwas
+    url: jdbc:postgresql://localhost:5432/bdwas?currentSchema=object-relational
     username: bdwas
     password: bdwas
 
@@ -20,7 +20,8 @@ spring:
           create-database-schemas: true
       hibernate:
         format_sql: true
-        default_schema: relational
+        default_schema: object-relational
+
 
 server:
-  port: 8080
+  port: 8083

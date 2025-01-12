@@ -2,35 +2,24 @@ package bdwas.models;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Struct;
 
-@Entity
-@Table(name = "personal_data")
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Embeddable
+@Struct(name = "personal_data_type")
 public class PersonalData {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private long id;
 
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
@@ -41,8 +30,7 @@ public class PersonalData {
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+    @Embedded
     private Address address;
 
     @Column(name = "gender", nullable = false, length = 100)

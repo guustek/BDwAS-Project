@@ -28,6 +28,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-web")
         developmentOnly("org.springframework.boot:spring-boot-devtools")
         implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
+        implementation("net.datafaker:datafaker:2.4.2")
         compileOnly("org.projectlombok:lombok")
         annotationProcessor("org.projectlombok:lombok")
 

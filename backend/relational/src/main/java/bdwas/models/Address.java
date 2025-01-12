@@ -6,13 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "address")
 @Setter
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +32,14 @@ public class Address {
     @Column(name = "street", nullable = false, length = 150)
     private String street;
 
-    @Column(name = "apartment_number", length = 50)
-    private String apartmentNumber;
-
     @Column(name = "postal_code", nullable = false, length = 20)
     private String postalCode;
 
+    @Builder
+    public Address(String country, String city, String street, String postalCode) {
+        this.country = country;
+        this.city = city;
+        this.street = street;
+        this.postalCode = postalCode;
+    }
 }
