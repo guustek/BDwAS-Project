@@ -6,7 +6,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -25,10 +24,9 @@ public class ObjectApplication {
                                 .build();
     }
 
-
     @Bean(name = "entityManagerFactory")
     public EntityManagerFactory getEntityManagerFactoryBean() {
-        return Persistence.createEntityManagerFactory("objectdb:mydb.odb");
+        return Persistence.createEntityManagerFactory("objectdb:db.odb");
     }
 
     @Bean

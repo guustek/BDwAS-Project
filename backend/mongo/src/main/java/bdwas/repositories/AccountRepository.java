@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface AccountRepository extends MongoRepository<Account, String> {
 
     Optional<Account> findAccountByEmail(String email);
-
 }

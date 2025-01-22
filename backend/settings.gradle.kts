@@ -1,3 +1,6 @@
 rootProject.name = "backend"
 
-include("relational", "mongo", "object", "object-relational")
+include("relational")
+include("object-relational")
+include("mongo")
+include("object")
