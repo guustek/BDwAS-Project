@@ -2,11 +2,6 @@ package bdwas;
 
 import java.util.Locale;
 
-import bdwas.models.Account;
-import bdwas.models.Address;
-import bdwas.models.Gender;
-import bdwas.models.PersonalData;
-import bdwas.models.Role;
 import bdwas.repositories.AccountRepository;
 import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;

@@ -36,11 +36,24 @@ subprojects {
         testImplementation("org.springframework.security:spring-security-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-        implementation("org.openjdk.jmh:jmh-core:1.37")
-        annotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
+        testImplementation("org.openjdk.jmh:jmh-core:1.37")
+        testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
     }
 
     tasks.withType<Test> {
         useJUnitPlatform()
+        dependsOn(rootProject.tasks.clean)
+        exclude("**/*jmh*.class")
+
+        doLast {
+            val benchmarkResult = File("$projectDir/benchmark.text")
+            if (benchmarkResult.exists()) {
+                copy {
+                    from(benchmarkResult)
+                    into(File(rootProject.projectDir, "results"))
+                    rename { fileName -> "${project.name}-$fileName" }
+                }
+            }
+        }
     }
 }

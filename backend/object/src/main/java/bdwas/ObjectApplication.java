@@ -26,7 +26,8 @@ public class ObjectApplication {
 
     @Bean(name = "entityManagerFactory")
     public EntityManagerFactory getEntityManagerFactoryBean() {
-        return Persistence.createEntityManagerFactory("objectdb:db.odb");
+        return Persistence.createEntityManagerFactory(
+                "objectdb://localhost:6136/db.odb;user=admin;password=admin");
     }
 
     @Bean

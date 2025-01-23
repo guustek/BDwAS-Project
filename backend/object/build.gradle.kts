@@ -9,3 +9,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("com.objectdb:objectdb-jk:2.9.2")
 }
+
+tasks.test {
+    maxHeapSize = "1g"
+}
