@@ -13,5 +13,5 @@ import org.springframework.data.annotation.Id;
 public abstract class BaseEntity<I> implements Identifiable<I> {
 
     @Id
-    private I id;
+    protected I id;
 }

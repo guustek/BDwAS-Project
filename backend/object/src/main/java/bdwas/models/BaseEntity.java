@@ -14,8 +14,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BaseEntity<I> implements Identifiable<I> {
+public abstract class BaseEntity<I> implements Identifiable<I> {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private I id;
+    protected I id;
 }

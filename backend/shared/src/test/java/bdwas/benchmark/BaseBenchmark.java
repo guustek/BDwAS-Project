@@ -82,7 +82,7 @@ public abstract class BaseBenchmark<E> {
         int iterations = 10;
 
         Options opt = new OptionsBuilder()
-                .include(this.getClass().getSimpleName())
+                .include("AccountBenchmark")
                 .warmupIterations(warmup)
                 .measurementIterations(iterations)
                 .warmupTime(TimeValue.NONE)

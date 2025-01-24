@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public abstract class MongoBenchmark<R extends MongoRepository<E, I>, E extends Identifiable<I>, I> extends BaseBenchmark<E> {
+public abstract class MongoBenchmark<R extends MongoRepository<E, I>, E extends Identifiable<I>, I>
+        extends BaseBenchmark<E> {
 
     private static Object repository;
 
