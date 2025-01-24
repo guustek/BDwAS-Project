@@ -22,7 +22,7 @@ spring:
         format_sql: true
         default_schema: object-relational
         jdbc:
-          batch_size: 20000
+          batch_size: 50
         order_inserts: true
         order_updates: true
        # generate_statistics: true

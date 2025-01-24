@@ -1,16 +1,26 @@
-package bdwas.mongo;
+package bdwas.objectrelational;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 import bdwas.models.Account;
 import bdwas.models.Address;
+import bdwas.models.BaseEntity;
 import bdwas.models.Gender;
 import bdwas.models.PersonalData;
 import bdwas.models.Role;
 import bdwas.repositories.AccountRepository;
 
-public class AccountRepositoryTest extends RepositoryBenchmarkBase<AccountRepository, Account, String> {
+public class AccountBenchmark extends RelationalBenchmark<AccountRepository, Account, Long> {
+
+    private static final List<Class<? extends BaseEntity<Long>>> tables = List.of(
+            Account.class
+    );
+
+    @Override
+    protected void updateEntity(Account entity) {
+        entity.setPassword(faker.internet().password());
+    }
 
     @Override
     protected Account generateEntity() {
@@ -39,13 +49,7 @@ public class AccountRepositoryTest extends RepositoryBenchmarkBase<AccountReposi
     }
 
     @Override
-    protected void updateEntities(Collection<Account> entities) {
-        entities.forEach(entity -> entity.setPassword(faker.internet().password()));
-    }
-
-    @Override
-    protected void clearTables() {
-        getRepository().deleteAll();
-
+    protected Iterable<Class<? extends BaseEntity<Long>>> getTables() {
+        return tables;
     }
 }

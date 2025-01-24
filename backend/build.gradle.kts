@@ -33,11 +33,8 @@ subprojects {
         annotationProcessor("org.projectlombok:lombok")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("org.springframework.security:spring-security-test")
+//        testImplementation("org.springframework.security:spring-security-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-        testImplementation("org.openjdk.jmh:jmh-core:1.37")
-        testAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
     }
 
     tasks.withType<Test> {

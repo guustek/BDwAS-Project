@@ -1,8 +1,6 @@
-package bdwas.relational;
+package bdwas.object;
 
-import java.util.Collection;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 import bdwas.models.Account;
 import bdwas.models.Address;
@@ -10,9 +8,13 @@ import bdwas.models.Gender;
 import bdwas.models.PersonalData;
 import bdwas.models.Role;
 import bdwas.repositories.AccountRepository;
-import jakarta.persistence.EntityTransaction;
 
-public class AccountRepositoryTest extends RepositoryBenchmarkBase<AccountRepository, Account, Long> {
+public class AccountBenchmark extends ObjectBenchmark<AccountRepository, Account, Long> {
+
+    @Override
+    protected void updateEntity(Account entity) {
+        entity.setPassword(faker.internet().password());
+    }
 
     @Override
     protected Account generateEntity() {
@@ -40,25 +42,4 @@ public class AccountRepositoryTest extends RepositoryBenchmarkBase<AccountReposi
                       .build();
     }
 
-    @Override
-    protected void updateEntities(Collection<Account> entities) {
-        entities.forEach(entity -> entity.setPassword(faker.internet().password()));
-    }
-
-    @Override
-    protected void clearTables() {
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-
-        Stream.of(Account.class, PersonalData.class, Address.class)
-              .forEachOrdered(entityClass -> {
-                  String tableName = getTableName(entityClass);
-                  entityManager.createNativeQuery("TRUNCATE TABLE " + tableName + " CASCADE")
-                               .executeUpdate();
-              });
-
-        transaction.commit();
-
-
-    }
 }

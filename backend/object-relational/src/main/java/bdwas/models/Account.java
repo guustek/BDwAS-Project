@@ -20,11 +20,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Account {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private long id;
+public class Account extends BaseEntity<Long> {
 
     @Column(name = "email", unique = true, nullable = false, length = 150)
     private String email;

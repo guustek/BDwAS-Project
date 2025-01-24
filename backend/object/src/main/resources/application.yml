@@ -9,7 +9,7 @@ spring:
       hibernate:
         format_sql: true
         jdbc:
-          batch_size: 20000
+          batch_size: 50
         order_inserts: true
         order_updates: true
 
