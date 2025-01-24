@@ -42,15 +42,15 @@ public abstract class BaseBenchmark<E> {
         entities = generateEntities(recordCount);
     }
 
-    @Benchmark
-    public void benchmarkAdd() {
-        addEntities(entities);
-    }
-
-    @Benchmark
-    public void benchmarkUpdate() {
-        updateEntities(existingEntities);
-    }
+//    @Benchmark
+//    public void benchmarkAdd() {
+//        addEntities(entities);
+//    }
+//
+//    @Benchmark
+//    public void benchmarkUpdate() {
+//        updateEntities(existingEntities);
+//    }
 
     @Benchmark
     public void benchmarkDelete() {
@@ -82,7 +82,7 @@ public abstract class BaseBenchmark<E> {
         int iterations = 10;
 
         Options opt = new OptionsBuilder()
-                .include("AccountBenchmark")
+                .include(this.getClass().getSimpleName())
                 .warmupIterations(warmup)
                 .measurementIterations(iterations)
                 .warmupTime(TimeValue.NONE)
